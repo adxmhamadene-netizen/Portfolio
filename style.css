@@ -80,3 +80,35 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
+.resume article {
+  position: relative;
+  padding-left: 1.5em;
+  padding-block: 0.25em;
+  margin-block: 1em;
+  border-left: 2px solid var(--color-accent);
+}
+
+.resume article::before {
+  content: "";
+  position: absolute;
+  left: calc(-0.4em - 1px);
+  top: 0.9em;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background: var(--color-accent);
+  transition: transform 0.2s;
+}
+
+.resume article:hover::before {
+  transform: scale(1.5);
+}
+
+.resume h2 {
+  color: var(--color-accent);
+}
+
+.resume time {
+  color: oklch(50% 0 0);
+}
