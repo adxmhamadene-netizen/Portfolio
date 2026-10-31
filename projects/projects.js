@@ -11,6 +11,8 @@ if (title) title.textContent = `${projects.length} Projects`;
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
+let selectedIndex = -1;
+
 function renderPieChart(projectsGiven) {
   let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
@@ -28,17 +30,30 @@ function renderPieChart(projectsGiven) {
   let arcData = sliceGenerator(data);
   let arcs = arcData.map((d) => arcGenerator(d));
 
-  
   let svg = d3.select('#projects-pie-plot');
   svg.selectAll('path').remove();
   let legend = d3.select('.legend');
   legend.selectAll('li').remove();
 
-  arcs.forEach((arc, idx) => {
+  arcs.forEach((arc, i) => {
     svg
       .append('path')
       .attr('d', arc)
-      .attr('fill', colors(idx));
+      .attr('fill', colors(i))
+      // ===== NEW: click to select / deselect =====
+      .on('click', () => {
+        selectedIndex = selectedIndex === i ? -1 : i;
+
+        svg
+          .selectAll('path')
+          .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+
+        legend
+          .selectAll('li')
+          .attr('class', (_, idx) =>
+            idx === selectedIndex ? 'legend-item selected' : 'legend-item',
+          );
+      });
   });
 
   data.forEach((d, idx) => {
@@ -62,5 +77,5 @@ searchInput.addEventListener('input', (event) => {
     return values.includes(query.toLowerCase());
   });
   renderProjects(filteredProjects, projectsContainer, 'h2');
-  renderPieChart(filteredProjects); 
+  renderPieChart(filteredProjects);
 });
