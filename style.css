@@ -177,3 +177,13 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   background: var(--color);
 }
+
+.pie-container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.pie-container .legend {
+  flex: 1;
+}
