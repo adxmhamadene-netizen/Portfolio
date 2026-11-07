@@ -224,3 +224,12 @@ dl.stats dd {
   font-size: 1.5em;
   font-weight: bold;
 }
+
+.gridlines .tick line {
+  stroke: lightgray;
+  stroke-opacity: 0.5;
+}
+
+.gridlines .domain {
+  display: none;
+}
