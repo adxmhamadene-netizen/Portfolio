@@ -204,3 +204,23 @@ h1, h2, h3, h4, h5, h6 {
 #projects-pie-plot path.selected {
   fill: var(--color);
 }
+
+dl.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  gap: 0.25em 1em;
+}
+
+dl.stats dt {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  color: gray;
+}
+
+dl.stats dd {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}

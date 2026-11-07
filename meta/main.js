@@ -41,6 +41,38 @@ function processCommits(data) {
     });
 }
 
+function renderCommitInfo(data, commits) {
+  const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+
+  dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+  dl.append('dd').text(data.length);
+
+  dl.append('dt').text('Total commits');
+  dl.append('dd').text(commits.length);
+
+  dl.append('dt').text('Files');
+  dl.append('dd').text(d3.group(data, (d) => d.file).size);
+
+  const fileLengths = d3.rollups(
+    data,
+    (v) => d3.max(v, (d) => d.line),
+    (d) => d.file,
+  );
+  dl.append('dt').text('Avg file length');
+  dl.append('dd').text(Math.round(d3.mean(fileLengths, (d) => d[1])));
+
+  dl.append('dt').text('Max depth');
+  dl.append('dd').text(d3.max(data, (d) => d.depth));
+
+  const workByPeriod = d3.rollups(
+    data,
+    (v) => v.length,
+    (d) => d.datetime.toLocaleString('en', { dayPeriod: 'short' }),
+  );
+  dl.append('dt').text('Most active time');
+  dl.append('dd').text(d3.greatest(workByPeriod, (d) => d[1])?.[0]);
+}
+
 let data = await loadData();
 let commits = processCommits(data);
-console.log(commits);
+renderCommitInfo(data, commits);
