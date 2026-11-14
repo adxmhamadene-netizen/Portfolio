@@ -1,5 +1,12 @@
 [
   {
+    "title": "Bikewatching",
+    "year": "2026",
+    "image": "https://adxmhamadene-netizen.github.io/Portfolio/images/bikewatching.png",
+    "url": "https://adxmhamadene-netizen.github.io/bikewatching/",
+    "description": "Interactive Mapbox + D3 map of Bluebikes traffic in Boston and Cambridge, filterable by time of day, with circle size showing volume and color showing arrivals vs. departures."
+  },
+  {
     "title": "Lorem ipsum dolor sit.",
     "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
