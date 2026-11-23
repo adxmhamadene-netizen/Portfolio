@@ -309,11 +309,12 @@ function updateFileDisplay(filteredCommits) {
     .groups(lines, (d) => d.file)
     .map(([name, lines]) => {
       return { name, lines };
-    });
+    })
+    .sort((a, b) => b.lines.length - a.lines.length);
 
   let filesContainer = d3
     .select('#files')
-    .selectAll('div')
+    .selectAll(':scope > div')
     .data(files, (d) => d.name)
     .join((enter) =>
       enter.append('div').call((div) => {
