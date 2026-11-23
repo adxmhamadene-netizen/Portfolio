@@ -364,3 +364,7 @@ circle.selected {
   bottom: auto;
   height: 50vh;
 }
+
+#scatter-story .step {
+  padding-bottom: 50vh;
+}
