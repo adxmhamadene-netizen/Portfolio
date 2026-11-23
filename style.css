@@ -282,3 +282,19 @@ circle:hover {
 circle.selected {
   fill: #ff6b6b;
 }
+
+#time-filter label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  grid-template-columns: none;
+  grid-column: auto;
+}
+
+#time-filter input {
+  flex: 1;
+}
+
+#time-filter time {
+  margin-left: auto;
+}
